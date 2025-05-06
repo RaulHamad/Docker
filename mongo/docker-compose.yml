@@ -1,0 +1,16 @@
+# docker-compose.yml
+version: '3'
+services:
+  mongodb:
+    image: mongodb/mongodb-community-server
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: usuario
+      MONGO_INITDB_ROOT_PASSWORD: micontraseña
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+
+volumes:
+  mongodb_data:
